@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+    <hibernate-mapping package="com.bean">
+    <class name="Flim" table="Flim_Details">
+        <id name="id"/>
+        <property name="name"/>
+        <list name="songs" cascade="all">
+            <key column="parent_id"/>
+            <index column="idx"></index>
+            <one-to-many class="Song"/>
+        </list>
+    </class>
+
+   <class name="Song" table="Song_Details">
+        <id name="id"/>
+       <property name="name"/>
+    </class>
+</hibernate-mapping>

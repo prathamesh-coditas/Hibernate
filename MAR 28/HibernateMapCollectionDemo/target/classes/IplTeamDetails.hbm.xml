@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.beans">
+    <class name = "IplTeamDetails" table = "IplTeamDetails">
+        <id name = "id">
+            <generator class="assigned"></generator>
+        </id>
+        <property name="name" column = "team_name"/>
+        
+        <map name="players" cascade="all" table = "JOINED_TABLE">
+            <key column="tid"/>
+            <index column="countryName" type = "string"/>
+            <many-to-many column="p_id" class="Players"></many-to-many>
+        </map>
+    </class>
+    
+    <class name = "Players" table = "Players_Details">
+        <id name = "jno">
+            <generator class="assigned"></generator>
+        </id>
+        <property name="playerName"/>
+    </class>
+    
+    
+</hibernate-mapping>
